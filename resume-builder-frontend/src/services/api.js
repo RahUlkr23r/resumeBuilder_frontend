@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // API Base URL - Change this to your backend URL
-export const API_BASE_URL = 'https://resume-builder-5-900u.onrender.com';
+export const API_BASE_URL = 'https://resume-builder-5-900u.onrender.com/api';
 
 // Create axios instance with default config
 export const apiClient = axios.create({
