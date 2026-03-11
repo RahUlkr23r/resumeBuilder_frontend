@@ -3,19 +3,20 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 3000,
-    open: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
+  build: {
+    // Ensure output uses .js extension
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
       }
     }
   },
-  build: {
-    outDir: 'dist',
-    sourcemap: true
+  // Ensure proper MIME types
+  server: {
+    mimeTypes: {
+      '**/*.jsx': 'application/javascript'
+    }
   }
 })
